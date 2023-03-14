@@ -1,0 +1,18 @@
+/* 在使用 Vite hot reload 之前，这份 css 先暂时内联在 HTML 中 */
+
+.container {
+  display: flex;
+}
+.treeContainer,
+.propertyContainer {
+  width: 50%;
+  min-height: 100vh;
+}
+
+.treeContainer {
+  overflow-x: scroll;
+  border-right: 1px solid black;
+}
+.propertyContainer {
+  font-size: 18px;
+}

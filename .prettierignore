@@ -1,0 +1,8 @@
+.aci.yml
+dist
+node_modules
+zBakeryData
+*.tiled
+*.tiled.json
+*.tiled-project
+*.tiled.resource.js
