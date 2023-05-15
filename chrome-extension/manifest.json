@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Oasis DevTools",
-  "description": "Oasis DevTools is a set of tools for developers to help them develop Oasis applications.",
+  "name": "Galacean DevTools",
+  "description": "Galacean DevTools is a set of tools for developers to help them develop Oasis applications.",
   "version": "0.1.0",
   "background": {
     "service_worker": "background.js"

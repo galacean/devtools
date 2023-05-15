@@ -1,1 +1,1 @@
-chrome.devtools.panels.create('Oasis', null, 'panel.html');
+chrome.devtools.panels.create('Galacean', null, 'panel.html');

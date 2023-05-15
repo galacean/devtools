@@ -6,7 +6,7 @@ function getIIFE(fn) {
 
 function isMainFrame() {
   return new Promise(resolve => {
-    chrome.devtools.inspectedWindow.eval(`!!window.__VENUS_DEVTOOLS_GLOBAL_HOOK__ && !!window.__VENUS_DEVTOOLS_GLOBAL_HOOK__.instance`, (result) => {
+    chrome.devtools.inspectedWindow.eval(`!!window.__GALACEAN_DEVTOOLS_GLOBAL_HOOK__ && !!window.__GALACEAN_DEVTOOLS_GLOBAL_HOOK__.instance`, (result) => {
       resolve(result);
     })
   })
@@ -17,7 +17,7 @@ function getValidFrameURL() {
     function findValidFrameURL() {
       for (let i = 0; i < frames.length; i++) {
         const frame = frames[i];
-        if (frame.__VENUS_DEVTOOLS_GLOBAL_HOOK__ && frame.__VENUS_DEVTOOLS_GLOBAL_HOOK__.instance) {
+        if (frame.__GALACEAN_DEVTOOLS_GLOBAL_HOOK__ && frame.__GALACEAN_DEVTOOLS_GLOBAL_HOOK__.instance) {
           return frame.location.href;
         }
       }
