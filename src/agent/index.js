@@ -1,12 +1,12 @@
 import { Agent } from './agent';
 import { sendMessage } from './utils/send-message';
 
-window.__venus_devtools_agent_injected__ = true;
+window.__galacean_devtools_agent_injected__ = true;
 
-const venusInstance = window.__GALACEAN_DEVTOOLS_GLOBAL_HOOK__.instance;
+const galaceanInstance = window.__GALACEAN_DEVTOOLS_GLOBAL_HOOK__.instance;
 
-if (venusInstance) {
+if (galaceanInstance) {
   sendMessage('INSTANCE_FOUND');
-  const VenusEngine = window.Venus || window.oasisEngine || window.Oasis;
-  window.__GALACEAN_DEVTOOLS_GLOBAL_HOOK__.agent = new Agent(venusInstance, VenusEngine);
+  const GalaceanEngine = window.Galacean || window.Venus || window.Oasis;
+  window.__GALACEAN_DEVTOOLS_GLOBAL_HOOK__.agent = new Agent(galaceanInstance, GalaceanEngine);
 }

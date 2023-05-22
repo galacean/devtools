@@ -8,7 +8,7 @@ function injectCode(src) {
   // This is why it works!
   script.src = src;
   script.onload = function () {
-    console.log('[VENUS-DEVTOOLS] script injected');
+    console.log('[Galacean-DEVTOOLS] script injected');
     this.remove();
   };
 
@@ -34,7 +34,7 @@ window.addEventListener('message', function (event) {
   if (
     typeof message !== 'object' ||
     message === null ||
-    message.source !== 'venus-devtools-agent'
+    message.source !== 'galacean-devtools-agent'
   ) {
     return;
   }
@@ -46,6 +46,6 @@ window.addEventListener('message', function (event) {
  * agent <- **content-script.js** <- background.js <- dev tools
  */
 chrome.runtime.onMessage.addListener(function (request) {
-  request.source = 'venus-devtools-devtools';
+  request.source = 'galacean-devtools-devtools';
   window.postMessage(request, '*');
 });

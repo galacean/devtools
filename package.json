@@ -1,7 +1,7 @@
 {
-  "name": "oasis-devtools",
+  "name": "galacean-devtools",
   "version": "0.1.0",
-  "description": "Oasis runtime devtools",
+  "description": "Galacean runtime devtools",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [

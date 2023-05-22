@@ -29,7 +29,7 @@ function getValidFrameURL() {
 }
 
 export async function injectDebugger() {
-  const isAgentInjected = 'window.__venus_devtools_agent_injected__';
+  const isAgentInjected = 'window.__galacean_devtools_agent_injected__';
   let frameURL;
   if (await isMainFrame()) {
     frameURL = await getValidFrameURL();

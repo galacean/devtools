@@ -16,11 +16,11 @@ const traverseTree = (entity, path = '') => {
 };
 
 export class Agent {
-  constructor(venusInstance, VenusEngine) {
-    this.instance = venusInstance;
-    this.VenusEngine = VenusEngine;
+  constructor(galaceanInstance, GalaceanEngine) {
+    this.instance = galaceanInstance;
+    this.GalaceanEngine = GalaceanEngine;
     this.initDevtoolsMessageListener();
-    window.__VENUS_DEVTOOLS_DEBUG__ = true;
+    window.__GALACEAN_DEVTOOLS_DEBUG__ = true;
   }
   initDevtoolsMessageListener() {
     window.addEventListener('message', (event) => {
@@ -35,7 +35,7 @@ export class Agent {
       if (
         typeof message !== 'object' ||
         message === null ||
-        message.source !== 'venus-devtools-devtools'
+        message.source !== 'galacean-devtools-devtools'
       ) {
         return;
       }
@@ -56,14 +56,14 @@ export class Agent {
       }
       case 'SET_ENTITY_DATA': {
         const { path, key, value } = message.data;
-        window.__VENUS_DEVTOOLS_DEBUG__ &&
+        window.__GALACEAN_DEVTOOLS_DEBUG__ &&
           console.log(
             '[Agent] received message: SET_ENTITY_DATA. path, key, value is',
             path,
             key,
             value,
           );
-        eval(`window.$venus.${key} = ${value}`);
+        eval(`window.$galacean.${key} = ${value}`);
         this.selectEntityInTree(path);
         break;
       }
@@ -88,10 +88,10 @@ export class Agent {
     };
   };
   selectEntityInTree = (path) => {
-    window.__VENUS_DEVTOOLS_DEBUG__ && console.log('[Agent] selectEntityInTree', path);
+    window.__GALACEAN_DEVTOOLS_DEBUG__ && console.log('[Agent] selectEntityInTree', path);
     const entity = this.rootEntity.findByPath(path);
     if (!entity) return;
-    window.$venus = entity;
+    window.$galacean = entity;
     const {
       isActive,
       transform: { position, rotation, scale },

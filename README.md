@@ -1,4 +1,4 @@
-# Oasis DevTools
+# Galacean DevTools
 
 ## Development
 
