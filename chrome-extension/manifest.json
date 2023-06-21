@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Galacean DevTools",
   "description": "Galacean DevTools is a set of tools for developers to help them develop Galacean applications.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "background": {
     "service_worker": "background.js"
   },
