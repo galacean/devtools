@@ -11,7 +11,7 @@ function FormItem({ name, children, uiOnly, ...restProps }) {
 
 export function EntityData() {
   const { selectedEntity, selectedKeys, handleEntityDataChange } = useContext();
-  if (!selectedEntity) return '先从左侧选择一个 Entity';
+  if (!selectedEntity || Object.keys(selectedEntity).length === 0) return '先从左侧选择一个 Entity';
   const fields = Object.keys(selectedEntity).map((key) => ({
     name: [key],
     value: selectedEntity[key],

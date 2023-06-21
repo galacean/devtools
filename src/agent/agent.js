@@ -74,22 +74,43 @@ export class Agent {
   sendTestMessageToPanel() {
     sendMessage('agent -> panel');
   }
-  get rootEntity() {
-    return this.instance.sceneManager.activeScene.getRootEntity();
+  get rootEntities() {
+    return this.instance.sceneManager.activeScene._rootEntities;
   }
   getTreeData = () => {
+    // 遍历所有 rootEntity 然后递归获获取树形结构
     return {
-      // key: rootEntity.instanceId,
       key: '/',
-      title: 'root',
+      title: 'ActiveScene',
       path: '/',
       hasMeshRenderer: false,
-      children: this.rootEntity.children.map((e) => traverseTree(e)),
-    };
+      children: this.rootEntities.map((rootEntity, index) => {
+        const path = `/${index}/`
+        return {
+          // key: rootEntity.instanceId,
+          key: path,
+          title: `RootEntity[${index}]`,
+          path,
+          hasMeshRenderer: false,
+          children: this.rootEntities[index].children.map((e) => traverseTree(e, path)),
+        };
+      })
+    }
+
   };
   selectEntityInTree = (path) => {
     window.__GALACEAN_DEVTOOLS_DEBUG__ && console.log('[Agent] selectEntityInTree', path);
-    const entity = this.rootEntity.findByPath(path);
+    // 选中树形目录根节点时清空属性面板
+    if (path === '/') {
+      sendMessage('REPORT_SELECTED_ENTITY_DATA', {});
+      return;
+    }
+    // 未处理的 path 带有 `/0` 前缀，数字代表 rootEntity 的 index
+    const parts = path.split('/')
+    const rootEntityIndex = parseInt(parts[1])
+    parts.splice(0, 2); // 删除前两个部分
+    const realPath = parts.join("/");
+    const entity = this.rootEntities[rootEntityIndex].findByPath(realPath);
     if (!entity) return;
     window.$galacean = entity;
     const {

@@ -26,7 +26,7 @@ const getDefaultExpandedKeys = (treeData) => {
 export const [ContextProvider, useContext] = constate(() => {
   const [treeData, setTreeData] = useState([]);
   const [expandedKeys, setExpandedKeys] = useState([]);
-  const [selectedEntity, setSelectedEntity] = useState(null);
+  const [selectedEntity, setSelectedEntity] = useState({});
   const [selectedKeys, setSelectedKeys] = useState([]);
   useEffect(() => {
     const agentMessageHandler = (msg) => {
