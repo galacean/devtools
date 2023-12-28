@@ -7,8 +7,11 @@ import {
 	WebGLEngine,
 } from "@galacean/engine";
 import { OrbitControl } from '@galacean/engine-toolkit-controls'
+import { loadGLTF } from "./gltf";
+import { loadEnv } from "./env";
 
 export async function createRuntime() {
+  // @ts-ignore
 	const engine = await WebGLEngine.create({
 		canvas: document.getElementById("canvas") as HTMLCanvasElement,
 	});
@@ -17,8 +20,8 @@ export async function createRuntime() {
 	const scene = engine.sceneManager.activeScene;
 	const rootEntity = scene.createRootEntity();
 
-  scene.ambientLight.diffuseSolidColor.set(1, 1, 1, 1);
-  scene.ambientLight.diffuseIntensity = 1.2;
+  // scene.ambientLight.diffuseSolidColor.set(1, 1, 1, 1);
+  // scene.ambientLight.diffuseIntensity = 1.2;
 
 	// init camera
 	const cameraEntity = rootEntity.createChild("camera");
@@ -45,6 +48,9 @@ export async function createRuntime() {
 	color.a = 1.0;
 	renderer.mesh = PrimitiveMesh.createCuboid(engine);
 	renderer.setMaterial(mtl);
+
+  await loadEnv(engine)
+  await loadGLTF(engine)
 
 	engine.run();
 }
