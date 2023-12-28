@@ -18,4 +18,4 @@ module.exports = {
   // Always include parens. Example: (x) => x
   // Why? Minimizes diff churn when adding or removing arguments.
   arrowParens: 'always',
-};
+}

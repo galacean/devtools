@@ -1,6 +1,14 @@
 {
-    "cSpell.words": [
-        "galacean",
-        "IIFE"
-    ]
+  "cSpell.words": [
+    "galacean",
+    "IIFE"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "vite.autoStart": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.associations": {
+    "*.css": "postcss"
+  }
 }

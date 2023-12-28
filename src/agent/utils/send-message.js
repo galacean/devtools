@@ -2,9 +2,9 @@ export const sendMessage = function (name, data) {
   window.postMessage(
     {
       source: 'galacean-devtools-agent',
-      name: name,
+      name,
       data: data || {},
     },
     '*',
-  );
-};
+  )
+}
