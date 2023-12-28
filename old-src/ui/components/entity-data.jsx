@@ -1,29 +1,30 @@
-import { Form, Switch, InputNumber, Tag } from 'antd';
-import { useContext } from '../context';
+import { Form, InputNumber, Switch, Tag } from 'antd'
+import { useContext } from '../context'
 
 function FormItem({ name, children, uiOnly, ...restProps }) {
-  const props = { ...restProps, label: name, style: { marginBottom: 0 } };
-  if (!uiOnly) {
-    props.name = name;
-  }
-  return <Form.Item {...props}>{children}</Form.Item>;
+  const props = { ...restProps, label: name, style: { marginBottom: 0 } }
+  if (!uiOnly)
+    props.name = name
+
+  return <Form.Item {...props}>{children}</Form.Item>
 }
 
 export function EntityData() {
-  const { selectedEntity, selectedKeys, handleEntityDataChange } = useContext();
-  if (!selectedEntity || Object.keys(selectedEntity).length === 0) return '先从左侧选择一个 Entity';
-  const fields = Object.keys(selectedEntity).map((key) => ({
+  const { selectedEntity, selectedKeys, handleEntityDataChange } = useContext()
+  if (!selectedEntity || Object.keys(selectedEntity).length === 0)
+    return '先从左侧选择一个 Entity'
+  const fields = Object.keys(selectedEntity).map(key => ({
     name: [key],
     value: selectedEntity[key],
-  }));
+  }))
   return (
     <div className="propertyContainer">
       <Form
         fields={fields}
         onFieldsChange={(changedFields) => {
-          const key = changedFields[0].name[0];
-          const value = changedFields[0].value;
-          handleEntityDataChange(key, value);
+          const key = changedFields[0].name[0]
+          const value = changedFields[0].value
+          handleEntityDataChange(key, value)
         }}
         labelCol={{ span: 12 }}
         wrapperCol={{ span: 12 }}
@@ -63,11 +64,11 @@ export function EntityData() {
           <InputNumber size="small" />
         </FormItem>
         <FormItem name="components" uiOnly>
-          {selectedEntity.components.map((component) => (
+          {selectedEntity.components.map(component => (
             <Tag key={component.type}>{component.type}</Tag>
           ))}
         </FormItem>
       </Form>
     </div>
-  );
+  )
 }

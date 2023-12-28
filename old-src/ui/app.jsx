@@ -1,9 +1,9 @@
-import React from 'react';
-import { Tree, Switch } from 'antd';
-import { useContext, ContextProvider } from './context';
-import { EntityData } from './components/entity-data';
+import React from 'react'
+import { Tree } from 'antd'
+import { ContextProvider, useContext } from './context'
+import { EntityData } from './components/entity-data'
 
-const AppImpl = () => {
+function AppImpl() {
   const {
     treeData,
     expandedKeys,
@@ -11,7 +11,7 @@ const AppImpl = () => {
     getTreeData,
     selectedKeys,
     handleSelectedKeysChange,
-  } = useContext();
+  } = useContext()
   return (
     <div className="container">
       <div className="treeContainer">
@@ -27,11 +27,13 @@ const AppImpl = () => {
       </div>
       <EntityData />
     </div>
-  );
-};
+  )
+}
 
-export const App = () => (
-  <ContextProvider>
-    <AppImpl />
-  </ContextProvider>
-);
+export function App() {
+  return (
+    <ContextProvider>
+      <AppImpl />
+    </ContextProvider>
+  )
+}

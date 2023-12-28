@@ -1,7 +1,9 @@
+/* eslint-disable no-eval */
+/* eslint-disable no-console */
 import { sendMessage } from './utils/send-message'
 
 function traverseTree(entity, path = '') {
-  const { name, instanceId, children } = entity
+  const { name, children } = entity
   const myPath = `${path}/${name}`
   const hasMeshRenderer = entity._components.some(
     c => typeof c.constructor.name === 'string' && c.constructor.name.includes('MeshRenderer'),
