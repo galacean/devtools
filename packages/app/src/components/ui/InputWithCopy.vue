@@ -34,7 +34,7 @@ const highlightedHtml = computedAsync(async () => {
 
 <template>
   <div class="flex-center m-auto" gap="2">
-    <button @click="onCopy">
+    <button p-2 @click="onCopy">
       <div i-ri-file-copy-line />
     </button>
 

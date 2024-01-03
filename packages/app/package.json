@@ -34,6 +34,8 @@
     "socket.io-client": "^4.7.2"
   },
   "devDependencies": {
+    "@advjs/blender-ui": "0.0.2-beta.10",
+    "@galacean/engine": "1.1.0-beta.32",
     "@iconify-json/carbon": "^1.1.27",
     "@iconify-json/ri": "^1.1.18",
     "@types/ip": "^1.1.3",

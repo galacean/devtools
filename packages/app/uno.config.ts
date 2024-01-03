@@ -1,5 +1,5 @@
 import { colord } from 'colord'
-import { defineConfig, presetAttributify, presetIcons, presetUno, presetWebFonts } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetUno } from 'unocss'
 
 const blue = '#42b983'
 
@@ -113,13 +113,6 @@ export default defineConfig({
   presets: [
     presetUno(),
     presetAttributify(),
-    presetWebFonts({
-      fonts: {
-        sans: 'DM Sans',
-        mono: 'DM Mono',
-        stylish: 'Caveat',
-      },
-    }),
     presetIcons({
       prefix: 'i-',
     }),

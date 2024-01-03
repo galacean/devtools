@@ -3,6 +3,7 @@ import io from 'socket.io-client/dist/socket.io.js'
 import type { App } from 'vue'
 import consola from 'consola'
 import { devtoolsState } from '../../../core/src/vue-plugin'
+import { treeData } from '../stores'
 
 // import { createConnectionApp, initDevTools } from '../../client/src'
 // import { Bridge } from '../../core/src/bridge'
@@ -49,6 +50,11 @@ export function init(app: App) {
     //     reload = fn
     //   },
     // })
+  })
+
+  socket.on('galacean-devtools:refresh', (data) => {
+    // console.log('galacean-devtools:refresh')
+    treeData.value = data
   })
 
   socket.on('galacean-devtools:disconnect', () => {

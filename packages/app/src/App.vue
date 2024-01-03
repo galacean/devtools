@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { useDevToolsState } from '../../core/src/vue-plugin'
+import { treeData } from './stores'
 import { getIpAddress } from '@/electron/ipc/renderer'
 
 const port = window.process.env.PORT || 8848
@@ -27,8 +28,8 @@ const devtoolsReady = computed(() => {
   >
     <GalaceanLogo />
   </WaitForConnection>
-  <div>
-    Connected
+  <div class="h-screen w-screen text-left">
+    <BTree class="w-full" :data="treeData" />
     <slot />
   </div>
 </template>

@@ -55,5 +55,6 @@ export async function createRuntime() {
 
   // for galacean-devtools
   // @ts-expect-error global hook
-  window.__GALACEAN_DEVTOOLS_GLOBAL_HOOK__ && window.__GALACEAN_DEVTOOLS_GLOBAL_HOOK__.register(engine)
+  // window.__GALACEAN_DEVTOOLS_GLOBAL_HOOK__ && window.__GALACEAN_DEVTOOLS_GLOBAL_HOOK__.register(engine)
+  globalThis.__GALACEAN_ENGINE__ = engine
 }

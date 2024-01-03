@@ -38,6 +38,11 @@ export function init() {
       socket.broadcast.emit('galacean-devtools:init')
     })
 
+    socket.on('galacean-devtools:refresh', (data) => {
+      consola.success(data)
+      socket.broadcast.emit('galacean-devtools:refresh', data)
+    })
+
     socket.on('galacean-devtools:disconnect', () => {
       socket.broadcast.emit('galacean-devtools:disconnect')
     })

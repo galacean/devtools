@@ -11,6 +11,9 @@ import './styles/main.css'
 
 import { init as initDevTools } from './devtools'
 
+import '@advjs/blender-ui/client/styles/index.scss'
+import '@advjs/blender-ui/dist/icons.css'
+
 // `nodeIntegration` needs to be enabled in the Main process.
 
 const app = createApp(App)
