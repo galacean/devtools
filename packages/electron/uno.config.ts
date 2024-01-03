@@ -1,12 +1,39 @@
-import { defineConfig, presetAttributify, presetWebFonts } from 'unocss'
+import { colord } from 'colord'
+import { defineConfig, presetAttributify, presetIcons, presetUno, presetWebFonts } from 'unocss'
+
+const blue = '#42b983'
 
 export const themeDef = {
   colors: {
-    black: '#000000',
+    'black': '#000000',
+
+    // primary
+    'primary-100': colord(blue).lighten(0.3).toHex(), // '#4ecb9c
+    'primary-200': colord(blue).lighten(0.2).toHex(), // '#4ecb9c
+    'primary-300': colord(blue).lighten(0.1).toHex(), // '#4ecb9c
+    'primary-400': colord(blue).lighten(0.05).toHex(), // '#4ecb9c
+    'primary-500': blue,
+    'primary-600': colord(blue).darken(0.05).toHex(),
+    'primary-700': colord(blue).darken(0.1).toHex(),
+    'primary-800': colord(blue).darken(0.15).toHex(),
+    'primary-900': colord(blue).darken(0.2).toHex(),
+  },
+}
+
+export const theme = {
+  colors: Object.entries(themeDef.colors).reduce((acc, [key, value]) => {
+    acc[key] = value
+    acc[`${key}-lighter`] = colord(value).lighten(0.025).toHex()
+    acc[`${key}-darker`] = colord(value).darken(0.08).toHex()
+    return acc
+  }, {} as Record<string, any>),
+  fontFamily: {
+    sans: 'Avenir, Helvetica, Arial, sans-serif',
   },
 }
 
 export default defineConfig({
+  theme,
   rules: [
     /**
      * Credit to Nanda Syahrasyad (https://github.com/narendrasss)
@@ -24,11 +51,6 @@ export default defineConfig({
       'background-size': '40px 40px',
     }],
   ],
-  theme: {
-    fontFamily: {
-      'data-field': 'Roboto Mono, Menlo, Consolas, monospace',
-    },
-  },
   variants: [
     // @children:[span]:bg-red => .@children\:\[span\]\:bg-red > span { bg-red }
     (input: string) => {
@@ -55,6 +77,8 @@ export default defineConfig({
     },
   ],
   shortcuts: [{
+    'flex-center': 'flex items-center justify-center',
+
     // general
     'bg-base': 'bg-white dark:bg-black',
     'text-base': 'text-black dark:text-white',
@@ -87,6 +111,7 @@ export default defineConfig({
     'state-value-string': 'text-#c41a16',
   }, [/^theme-card-(\w+)$/, $ => `p2 flex gap2 border border-base bg-base items-center rounded min-w-40 min-h-25 justify-center transition-all saturate-0 op50 shadow hover:(op100 bg-${$[1]}/10 text-${$[1]}6 saturate-100)`]],
   presets: [
+    presetUno(),
     presetAttributify(),
     presetWebFonts({
       fonts: {
@@ -94,6 +119,9 @@ export default defineConfig({
         mono: 'DM Mono',
         stylish: 'Caveat',
       },
+    }),
+    presetIcons({
+      prefix: 'i-',
     }),
   ],
   safelist: [

@@ -47,6 +47,7 @@ export function init() {
   })
 
   httpServer.listen(port, () => {
+    // eslint-disable-next-line no-console
     console.log(`listening on 0.0.0.0:${port}`)
   })
 }

@@ -2,6 +2,7 @@ import { join, resolve } from 'node:path'
 import Vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import VueRouter from 'unplugin-vue-router/vite'
 import Unocss from 'unocss/vite'
 
 export default {
@@ -24,6 +25,11 @@ export default {
       },
     },
     Vue(),
+
+    VueRouter({
+      extensions: ['.vue', '.ts'],
+    }),
+
     Components({
       dirs: ['./src/components'],
       dts: join(__dirname, 'components.d.ts'),

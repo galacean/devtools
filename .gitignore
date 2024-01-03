@@ -28,3 +28,7 @@ node_modules
 src/auto-imports.d.ts
 src/components.d.ts
 .eslintcache
+
+# Projects
+packages/electron/client/**/*
+docs/.vitepress/cache/

@@ -9,7 +9,9 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AppConnecting: typeof import('./src/components/AppConnecting.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    WaitForConnection: typeof import('./src/components/WaitForConnection.vue')['default']
   }
 }

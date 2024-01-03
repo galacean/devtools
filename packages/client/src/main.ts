@@ -7,25 +7,15 @@ import { createMemoryHistory, createRouter } from 'vue-router'
 import { getViteClient } from 'vite-hot-client'
 
 // Bridge, BridgeEvents, HandShakeServer, createDevToolsVuePlugin
+import { routes } from 'vue-router/auto/routes'
 import { registerBridgeRpc } from '../../core/src'
 import { BROADCAST_CHANNEL_NAME, isInChromePanel, isInElectron, isInIframe } from '../../shared/src'
 
 import App from './App.vue'
-import Components from '~/pages/components.vue'
-import Overview from '~/pages/overview.vue'
-import PiniaPage from '~/pages/pinia.vue'
-import RouterPage from '~/pages/router.vue'
-import Timeline from '~/pages/timeline.vue'
-import Pages from '~/pages/pages.vue'
-import Assets from '~/pages/assets.vue'
-import Graph from '~/pages/graph.vue'
-import Index from '~/pages/index.vue'
-import Settings from '~/pages/settings.vue'
-import CustomTabView from '~/pages/custom-tab-view.vue'
-import WaitForConnection from '~/components/WaitForConnection.vue'
+import WaitForConnection from './components/WaitForConnection.vue'
 
 import 'uno.css'
-import '~/assets/styles/main.css'
+import '~/styles/main.css'
 
 async function getViteHotContext() {
   if (import.meta.url?.includes('chrome-extension://'))
@@ -34,20 +24,6 @@ async function getViteHotContext() {
   const viteCLient = await getViteClient(`${location.pathname.split('/__devtools__')[0] || ''}/`.replace(/\/\//g, '/'), false)
   return viteCLient?.createHotContext('/____')
 }
-
-const routes = [
-  { path: '/', component: Index },
-  { path: '/overview', component: Overview },
-  { path: '/components', component: Components },
-  { path: '/pinia', component: PiniaPage },
-  { path: '/router', component: RouterPage },
-  { path: '/timeline', component: Timeline },
-  { path: '/pages', component: Pages },
-  { path: '/assets', component: Assets },
-  { path: '/graph', component: Graph },
-  { path: '/settings', component: Settings },
-  { path: '/custom-tab-view/:name', component: CustomTabView },
-]
 
 // @TODO: find a better way to handle it
 const devtoolsBridge: {

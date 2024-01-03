@@ -1,24 +1,18 @@
+import process from 'node:process'
 import io from 'socket.io-client/dist/socket.io.js'
-import ip from 'ip'
 
-// import { createConnectionApp, initDevTools } from '../client/devtools-panel'
-import { createConnectionApp, initDevTools } from '../../client/src'
-import { Bridge } from '../../core/src/bridge'
+// import { createConnectionApp, initDevTools } from '../../client/src'
+// import { Bridge } from '../../core/src/bridge'
 
-const port = window.process.env.PORT || 8098
+const port = process.env.PORT || 8098
 
-function init() {
+export function init() {
   const localhost = `http://localhost:${port}`
   const socket = io(localhost)
   let reload: Function | null = null
 
-  const app = createConnectionApp('#app', {
-    local: localhost,
-    network: `http://${ip.address()}:${port}`,
-  })
-
   socket.on('vue-devtools:init', () => {
-    app.unmount()
+    // app.unmount()
 
     // If new page is opened reload devtools
     if (reload)
@@ -52,5 +46,3 @@ function init() {
     init()
   })
 }
-
-init()
