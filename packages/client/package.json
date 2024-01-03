@@ -1,0 +1,19 @@
+{
+  "name": "@galacean-devtools/client",
+  "type": "module",
+  "scripts": {
+    "build": "tsx ./scripts/pre-build.ts && (nr build:lib & vite build)",
+    "build:lib": "vite build --config vite.lib.config.ts",
+    "stub": "nr stub:lib & vite build --watch",
+    "stub:lib": "vite build --config vite.lib.config.ts --watch"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.2",
+    "floating-vue": "2.0.0-beta.24",
+    "sass": "^1.69.7",
+    "unocss": "^0.51.12",
+    "vite": "^5.0.10",
+    "vue": "^3.4.3",
+    "vue-router": "^4.2.5"
+  }
+}

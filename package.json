@@ -19,6 +19,7 @@
     "demo": "pnpm -C demo run dev",
     "dev": "npm run clear && cross-env NODE_ENV=development run-p dev:*",
     "dev-firefox": "npm run clear && cross-env NODE_ENV=development EXTENSION=firefox run-p dev:*",
+    "dev:electron": "pnpm -C packages/electron run dev",
     "dev:prepare": "esno scripts/prepare.ts",
     "dev:background": "npm run build:background -- --mode development",
     "dev:web": "vite",

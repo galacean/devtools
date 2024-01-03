@@ -1,0 +1,41 @@
+{
+  "name": "@galacean/devtools-core",
+  "type": "module",
+  "version": "0.0.1",
+  "author": "YunYouJun",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./server": {
+      "types": "./dist/server/index.d.ts",
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup --clean",
+    "prepare:type": "tsup --dts-only",
+    "stub": "tsup --watch --onSuccess 'tsup --dts-only'"
+  },
+  "dependencies": {
+    "birpc": "^0.2.14",
+    "fast-glob": "^3.3.2",
+    "image-meta": "^0.2.0",
+    "mitt": "^3.0.1",
+    "pathe": "^1.1.1",
+    "vite-dev-rpc": "^0.1.4",
+    "vite-hot-client": "^0.2.3",
+    "vite-plugin-inspect": "^0.8.1"
+  },
+  "devDependencies": {
+    "vue": "^3.4.0"
+  }
+}
