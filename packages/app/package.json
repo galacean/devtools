@@ -1,5 +1,5 @@
 {
-  "name": "@galacean/devtools-electron",
+  "name": "@galacean/devtools-app",
   "type": "module",
   "version": "28.0.0",
   "private": true,
@@ -19,9 +19,11 @@
     }
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "run-p dev:*",
+    "dev:app": "vite",
+    "dev:lib": "tsx scripts/build.ts --watch",
     "build": "vue-tsc --noEmit && vite build && electron-builder",
-    "build:lib": "vue-tsc --noEmit && vite build",
+    "build:lib": "vue-tsc --noEmit && vite build && tsx scripts/build.ts",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -37,9 +39,12 @@
     "@types/ip": "^1.1.3",
     "@vitejs/plugin-vue": "^5.0.1",
     "@vueuse/core": "^10.1.2",
+    "consola": "^3.2.3",
     "electron": "^28.1.0",
     "electron-builder": "^24.9.1",
+    "shikiji": "^0.9.17",
     "tree-kill": "^1.2.2",
+    "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
     "vite-plugin-electron": "^0.28.0-beta.2",

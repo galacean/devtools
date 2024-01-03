@@ -1,15 +1,16 @@
 import type { ViteHotContext } from 'vite-hot-client'
 import { setupViteRPCClient } from '../vite-rpc'
+import type { BridgeInstanceType } from './core'
 
 const devtoolsBridge: {
-  // value: BridgeInstanceType
+  value: BridgeInstanceType
   viteRpc: {
     enabled: boolean
     api: ReturnType<typeof setupViteRPCClient>
   }
   // rpc: InstanceType<typeof BridgeRpcCore>
 } = {
-  // value: null!,
+  value: null!,
   viteRpc: {
     enabled: false,
     api: null!,
@@ -19,6 +20,7 @@ const devtoolsBridge: {
 
 export interface BridgeRpcOptions {
   viteRPCContext?: ViteHotContext | undefined
+  bridge: BridgeInstanceType
 }
 
 export function registerBridgeRpc(options: BridgeRpcOptions) {

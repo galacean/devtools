@@ -3,7 +3,10 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import process from 'node:process'
 import { BrowserWindow, app, ipcMain, shell } from 'electron'
+import { init as initServer } from '../server'
 import { registerHandle } from './handle'
+
+initServer()
 
 // Remove electron security warnings
 // This warning only shows in development mode

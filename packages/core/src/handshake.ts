@@ -1,4 +1,5 @@
 import type { BridgeInstanceType } from './bridge/core'
+import { devtoolsState } from './vue-plugin'
 
 export enum HandShakeEvents {
   SYN = 'syn',
@@ -28,7 +29,7 @@ export class HandShakeClient extends HandShake {
       this.socket.on(HandShakeEvents.SYN_ACK, () => {
         clearInterval(timer)
         this.socket.emit(HandShakeEvents.ACK)
-        devtools.state.clientConnected = true
+        devtoolsState.clientConnected.value = true
         resolve()
       })
     })

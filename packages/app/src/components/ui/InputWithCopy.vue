@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { useClipboard } from '@vueuse/core'
+import { computedAsync, useClipboard } from '@vueuse/core'
+import { codeToHtml } from 'shikiji'
 import { showNotification } from '../../composables'
 
 const props = defineProps<{
@@ -22,6 +23,13 @@ async function onCopy() {
     })
   }
 }
+
+const highlightedHtml = computedAsync(async () => {
+  return await codeToHtml(props.content, {
+    lang: 'html',
+    theme: 'github-dark',
+  })
+})
 </script>
 
 <template>
@@ -30,9 +38,7 @@ async function onCopy() {
       <div i-ri-file-copy-line />
     </button>
 
-    <div class="bg-dark-700 px-3 py-1.5 rounded-lg">
-      {{ content }}
-    </div>
+    <div v-html="highlightedHtml" />
     <slot />
   </div>
 </template>
