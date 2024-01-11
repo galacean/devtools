@@ -39,7 +39,8 @@ socket.on('connect', () => {
   socket.emit('galacean-devtools:init')
 
   const timer = setInterval(() => {
-    engine = (window as any).__GALACEAN_ENGINE__
+    // @ts-expect-error global engine in galacean-framework
+    engine = (window as any).__GALACEAN_ENGINE__ || window.engine
     if (engine) {
       timer && clearInterval(timer)
 

@@ -24,6 +24,7 @@ export default defineConfig(({ command }) => {
     resolve: {
       alias: {
         '@/': `${resolve(__dirname)}/`,
+        '@galacean/devtools-core': `${resolve(__dirname, '../core/src/index.ts')}`,
       },
     },
 

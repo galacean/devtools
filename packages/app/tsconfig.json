@@ -1,13 +1,16 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "target": "ESNext",
     "jsx": "preserve",
     "lib": ["ESNext", "DOM"],
     "useDefineForClassFields": true,
+    "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "Node",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@galacean/devtools-core": ["../core/src"]
     },
     "resolveJsonModule": true,
     "strict": true,

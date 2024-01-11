@@ -1,14 +1,16 @@
 {
   "compilerOptions": {
     "incremental": false,
-    "target": "es2016",
+    "target": "ESNext",
     "jsx": "preserve",
     "lib": ["DOM", "ESNext"],
     "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "node",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
+      "@galacean/devtools-core": ["./packages/devtools-core/src/index.ts"],
+      "@galacean/devtools-*": ["./packages/*/src/index.ts"]
     },
     "resolveJsonModule": true,
     "types": [

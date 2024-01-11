@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { createDevToolsVuePlugin } from '../../core/src/vue-plugin'
+import { createDevToolsVuePlugin } from '@galacean/devtools-core'
 
 import App from './App.vue'
 
