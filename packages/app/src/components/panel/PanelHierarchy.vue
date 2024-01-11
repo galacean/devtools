@@ -17,5 +17,10 @@ function onNodeShow(nodes: TreeNode[]) {
 </script>
 
 <template>
-  <AGUITree class="w-full" :data="treeData" @node-hide="onNodeHide" @node-show="onNodeShow" />
+  <AGUITree
+    class="w-full h-full text-left"
+    :data="treeData"
+    @node-hide="onNodeHide"
+    @node-show="onNodeShow"
+  />
 </template>

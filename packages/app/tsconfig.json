@@ -9,6 +9,7 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "paths": {
+      "~/*": ["./src/*"],
       "@/*": ["./*"],
       "@galacean/devtools-core": ["../core/src"]
     },

@@ -9,6 +9,8 @@ import 'uno.css'
 import './styles/index.css'
 import './styles/main.css'
 
+import './styles/index.scss'
+
 import { init as initDevTools } from './devtools'
 
 import '@advjs/gui/client/styles/index.scss'
@@ -19,6 +21,15 @@ import '@advjs/gui/dist/icons.css'
 const app = createApp(App)
 
 app.use(createDevToolsVuePlugin())
+
+const ctx = {
+  app,
+  isClient: true,
+  initialState: {},
+}
+// install all modules under `modules/`
+Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true }))
+  .forEach(i => i.install?.(ctx))
 
 app.mount('#app')
   .$nextTick(() => {

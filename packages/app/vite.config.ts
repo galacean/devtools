@@ -12,7 +12,6 @@ import { componentsDir as aguiComponentsDir } from '@advjs/gui/node'
 import pkg from './package.json'
 
 // https://vitejs.dev/config/
-// @ts-expect-error command
 export default defineConfig(({ command }) => {
   fs.rmSync('dist-electron', { recursive: true, force: true })
 
@@ -23,6 +22,7 @@ export default defineConfig(({ command }) => {
   return {
     resolve: {
       alias: {
+        '~/': `${resolve(__dirname, 'src')}/`,
         '@/': `${resolve(__dirname)}/`,
         '@galacean/devtools-core': `${resolve(__dirname, '../core/src/index.ts')}`,
       },

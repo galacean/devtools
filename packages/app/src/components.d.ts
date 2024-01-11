@@ -47,6 +47,7 @@ declare module 'vue' {
     GalaceanLogo: typeof import('./components/GalaceanLogo.vue')['default']
     InputWithCopy: typeof import('./components/ui/InputWithCopy.vue')['default']
     Notification: typeof import('./components/ui/Notification.vue')['default']
+    PageFrame: typeof import('./components/scene/PageFrame.vue')['default']
     PanelHierarchy: typeof import('./components/panel/PanelHierarchy.vue')['default']
     PanelProject: typeof import('./components/panel/PanelProject.vue')['default']
     PanelScene: typeof import('./components/panel/PanelScene.vue')['default']
