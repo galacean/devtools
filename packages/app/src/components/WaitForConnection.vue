@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useSceneStore } from '~/stores/scene'
 
 const props = defineProps<{
   local?: string
@@ -12,12 +11,6 @@ const network = computed(() => scriptWrapper(props.network!))
 
 function scriptWrapper(str: string) {
   return `\<script src="${str}"\>\</script\>`
-}
-
-const scene = useSceneStore()
-
-function goInspect() {
-  window.open(scene.inspectUrl)
 }
 </script>
 
@@ -39,21 +32,6 @@ function goInspect() {
       </div>
       <div class="mt-3 $ui-fcc flex-row">
         <InputWithCopy :content="network" />
-      </div>
-
-      <div flex gap="2" mt-5>
-        <AGUIInput
-          v-model="scene.inspectUrl"
-          placeholder="Page Url, e.g. http://localhost:8848"
-          @keyup.enter="goInspect"
-        />
-        <AGUIButton
-          class="leading-unset"
-          type="primary"
-          @click="goInspect"
-        >
-          GO
-        </AGUIButton>
       </div>
     </div>
   </div>

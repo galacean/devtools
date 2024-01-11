@@ -20,24 +20,37 @@ const state = useDevToolsState()!
 
 const scene = useSceneStore()
 const devtoolsReady = computed(() => {
-  return state.connected.value || scene.inspectUrl
+  return state.connected.value || (scene.inspectUrl && scene.inspectUrl.startsWith('http'))
 })
+
+function goInspect() {
+  window.open(scene.inspectUrl)
+}
 </script>
 
 <template>
   <AGUIPanel class="panel-scene flex-1" h="full" w="full">
     <AGUITabs :list="tabList" :default-index="2">
       <AGUITabPanel h="full" :unmount="false" relative>
-        <WaitForConnection
-          v-if="!devtoolsReady"
-          :local="`http://localhost:${port}`"
-          :network="network"
-        />
+        <div flex gap="2" class="p-1 justify-center items-center h-6">
+          <AGUIInput v-model="scene.inspectUrl" placeholder="Page Url, e.g. http://localhost:8848" />
+          <AGUIButton @click="goInspect">
+            GO
+          </AGUIButton>
+        </div>
 
-        <AppConnecting v-else>
-          <slot />
-          <PageFrame />
-        </AppConnecting>
+        <div class="h-full w-full">
+          <WaitForConnection
+            v-if="!devtoolsReady"
+            :local="`http://localhost:${port}`"
+            :network="network"
+          />
+
+          <AppConnecting v-else>
+            <slot />
+            <PageFrame />
+          </AppConnecting>
+        </div>
       </AGUITabPanel>
       <slot />
     </AGUITabs>
