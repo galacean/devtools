@@ -51,6 +51,19 @@ socket.on('connect', () => {
   }, 1000)
 })
 
+// hide
+socket.on('galacean-devtools:hide', (name: string) => {
+  const rootEntity = engine.sceneManager.activeScene.rootEntities[0]
+  const entity = rootEntity.findByName(name)
+  entity.isActive = false
+})
+
+socket.on('galacean-devtools:show', (name: string) => {
+  const rootEntity = engine.sceneManager.activeScene.rootEntities[0]
+  const entity = rootEntity.findByName(name)
+  entity.isActive = true
+})
+
 // Global disconnect handler. Fires in two cases:
 // - after calling above socket.disconnect()
 // - once devtools is closed (that's why we need socket.disconnect() here too, to prevent further polling)

@@ -8,11 +8,11 @@ import VueRouter from 'unplugin-vue-router/vite'
 import Components from 'unplugin-vue-components/vite'
 import UnoCSS from 'unocss/vite'
 
+import { componentsDir as aguiComponentsDir } from '@advjs/gui/node'
 import pkg from './package.json'
 
-const aguiDirs = resolve(__dirname, 'node_modules/@advjs/blender-ui/client/components')
-
 // https://vitejs.dev/config/
+// @ts-expect-error command
 export default defineConfig(({ command }) => {
   fs.rmSync('dist-electron', { recursive: true, force: true })
 
@@ -36,7 +36,7 @@ export default defineConfig(({ command }) => {
 
       // https://github.com/antfu/unplugin-vue-components
       Components({
-        dirs: ['src/components', aguiDirs],
+        dirs: ['src/components', aguiComponentsDir],
         // generate `components.d.ts` for ts support with Volar
         dts: 'src/components.d.ts',
       }),

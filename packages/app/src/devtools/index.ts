@@ -1,5 +1,6 @@
 import process from 'node:process'
 import io from 'socket.io-client/dist/socket.io.js'
+import type { io as socketIOClient } from 'socket.io-client'
 import type { App } from 'vue'
 import consola from 'consola'
 import { devtoolsState } from '../../../core/src/vue-plugin'
@@ -11,7 +12,7 @@ import { treeData } from '../stores'
 const port = process.env.PORT || 8848
 const localhost = `http://localhost:${port}`
 
-export const socket = io(localhost)
+export const socket = io(localhost) as ReturnType<typeof socketIOClient>
 
 export function initDevTools(app: App) {
   consola.info('initDevTools', app)

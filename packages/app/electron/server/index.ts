@@ -39,8 +39,14 @@ export function init() {
     })
 
     socket.on('galacean-devtools:refresh', (data) => {
-      consola.success(data)
       socket.broadcast.emit('galacean-devtools:refresh', data)
+    })
+
+    socket.on('galacean-devtools:show', (name) => {
+      socket.broadcast.emit('galacean-devtools:show', name)
+    })
+    socket.on('galacean-devtools:hide', (name) => {
+      socket.broadcast.emit('galacean-devtools:hide', name)
     })
 
     socket.on('galacean-devtools:disconnect', () => {

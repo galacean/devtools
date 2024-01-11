@@ -94,6 +94,8 @@ async function createWindow() {
   // win.webContents.on('will-navigate', (event, url) => { }) #344
 
   registerHandle()
+
+  win.setAlwaysOnTop(true)
 }
 
 app.whenReady().then(createWindow)
