@@ -2,7 +2,7 @@
   <main class="h-screen w-screen">
     <AGUILayout>
       <template #right>
-        <!-- <PanelInspector /> -->
+        <PanelInspector />
       </template>
 
       <template #left-top>
